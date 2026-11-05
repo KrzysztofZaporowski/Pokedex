@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-export function DetailPage() {
+export function DetailsPage() {
   const { name } = useParams<{ name: string }>();
 
   return (
