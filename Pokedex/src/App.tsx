@@ -3,7 +3,6 @@ import { ListPage } from "./pages/ListPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ErrorPage } from "./pages/ErrorPage";
-import "./App.css";
 
 function App() {
   return (
