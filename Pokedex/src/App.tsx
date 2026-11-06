@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ListPage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/details/:name" element={<DetailsPage />} />
+          <Route path="/pokemon/:name" element={<DetailsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
