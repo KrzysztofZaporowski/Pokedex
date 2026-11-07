@@ -28,9 +28,9 @@ export function Pagination({
         Previous
       </button>
       <span className={styles.info}>
-        <strong>{currentPage}</strong>
+        <strong>{` ${currentPage}`}</strong>
         of
-        <strong>{totalPages}</strong>
+        <strong>{` ${totalPages}`}</strong>
       </span>
       <button
         type="button"
