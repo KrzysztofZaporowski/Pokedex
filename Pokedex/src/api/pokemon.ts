@@ -93,7 +93,7 @@ export async function fetchPokemonList(
     const data: PokeApiTypeResponse = await response.json();
     rawResources = data.pokemon.map((p) => p.pokemon);
   } else {
-    const response = await fetch(`${BASE_URL}/pokemon?limit=100000&offset=0`);
+    const response = await fetch(`${BASE_URL}/pokemon?limit=2000&offset=0`);
     if (!response.ok) {
       throw new Error(
         `Failed to fetch Pokémon list (HTTP ${response.status}): ${response.statusText}`,
