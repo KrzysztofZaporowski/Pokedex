@@ -145,7 +145,7 @@ export async function fetchPokemonDetails(
   name: string,
 ): Promise<PokemonDetails> {
   const normailizedName = name.trim().toLowerCase();
-  const reponse = await fetch(`{BASE_URL}/pokemon/${normailizedName}`);
+  const reponse = await fetch(`${BASE_URL}/pokemon/${normailizedName}`);
   if (!reponse.ok) {
     if (reponse.status === 404) {
       throw new Error(`Pokémon "${name}" not found.`);
