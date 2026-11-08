@@ -18,3 +18,19 @@ export const POKEMON_TYPES = [
   "steel",
   "fairy",
 ] as const;
+
+export interface PokemonStat {
+  name: string;
+  value: number;
+}
+
+export interface PokemonDetails {
+  id: number;
+  name: string;
+  imageUrl: string;
+  types: string[];
+  heightInMeters: number;
+  weightInKilograms: number;
+  abilities: string[];
+  stats: PokemonStat[];
+}

@@ -1,3 +1,5 @@
+import type { PokemonDetails } from "./pokemon.types";
+
 const BASE_URL = "https://pokeapi.co/api/v2";
 
 export interface NamedApiResponse {
@@ -16,6 +18,25 @@ interface PokeApiTypeResponse {
   pokemon: {
     pokemon: NamedApiResponse;
     slot: number;
+  }[];
+}
+
+interface PokeApiDetailsResponse {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  types: {
+    slot: number;
+    type: NamedApiResponse;
+  }[];
+  abilities: {
+    ability: NamedApiResponse;
+    is_hidden: boolean;
+  }[];
+  stats: {
+    base_stat: number;
+    stat: NamedApiResponse;
   }[];
 }
 
@@ -117,5 +138,34 @@ export async function fetchPokemonList(
     items: pageSlice.map(mapResourceToPokemonItem),
     totalCount,
     totalPages,
+  };
+}
+
+export async function fetchPokemonDetails(
+  name: string,
+): Promise<PokemonDetails> {
+  const normailizedName = name.trim().toLowerCase();
+  const reponse = await fetch(`${BASE_URL}/pokemon/${normailizedName}`);
+  if (!reponse.ok) {
+    if (reponse.status === 404) {
+      throw new Error(`Pokémon "${name}" not found.`);
+    }
+    throw new Error(
+      `Failed to fetch Pokémon details (HTTP ${reponse.status}): ${reponse.statusText}`,
+    );
+  }
+  const data: PokeApiDetailsResponse = await reponse.json();
+  return {
+    id: data.id,
+    name: data.name,
+    imageUrl: getPokemonArtworkUrl(data.id),
+    types: data.types.map((t) => t.type.name),
+    heightInMeters: data.height / 10,
+    weightInKilograms: data.weight / 10,
+    abilities: data.abilities.map((a) => a.ability.name),
+    stats: data.stats.map((s) => ({
+      name: s.stat.name,
+      value: s.base_stat,
+    })),
   };
 }
