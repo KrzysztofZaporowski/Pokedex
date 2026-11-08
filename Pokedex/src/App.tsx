@@ -3,8 +3,11 @@ import { ListPage } from "./pages/ListPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { useTeamStore } from "./features/team/useTeamStore";
+import { MAX_TEAM_SIZE } from "./features/team/team.types";
 
 function App() {
+  const teamCount = useTeamStore((state) => state.members.length);
   return (
     <>
       <nav>
@@ -13,7 +16,9 @@ function App() {
             <NavLink to="/">Pokedex</NavLink>
           </li>
           <li>
-            <NavLink to="/team">Team page</NavLink>
+            <NavLink to="/team">
+              Team ({teamCount}/{MAX_TEAM_SIZE})
+            </NavLink>
           </li>
         </ul>
       </nav>

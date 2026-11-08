@@ -4,7 +4,6 @@ import type { PokemonListItem } from "../api/pokemon";
 import { useTeamStore } from "../features/team/useTeamStore";
 import { MAX_TEAM_SIZE } from "../features/team/team.types";
 import styles from "./PokemonCard.module.css";
-import { is } from "zod/locales";
 
 interface PokemonCardProps {
   pokemon: PokemonListItem;
