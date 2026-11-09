@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useTeamStore } from "../features/team/useTeamStore";
 import { MAX_TEAM_SIZE } from "../features/team/team.types";
+import { TeamForm } from "../features/team/TeamForm";
+import { SavedTeamsList } from "../features/team/SavedTeamsList";
 import { PokemonCard } from "../components/PokemonCard";
 import styles from "./TeamPage.module.css";
 
@@ -24,23 +26,25 @@ export function TeamPage() {
             Clear Team
           </button>
         )}
-
-        {members.length === 0 ? (
-          <div className={styles.empty}>
-            <h2>Your team is empty</h2>
-            <p>Go to Pokedex and select up to 6 Pokémon for your squad.</p>
-            <Link to="/" className={styles.browseLink}>
-              Go to Pokedex
-            </Link>
-          </div>
-        ) : (
-          <div className={styles.grid}>
-            {members.map((pokemon) => (
-              <PokemonCard key={pokemon.id} pokemon={pokemon} />
-            ))}
-          </div>
-        )}
       </header>
+
+      {members.length === 0 ? (
+        <div className={styles.empty}>
+          <h2>Your team is empty</h2>
+          <p>Go to Pokedex and select up to 6 Pokémon for your squad.</p>
+          <Link to="/" className={styles.browseLink}>
+            Go to Pokedex
+          </Link>
+        </div>
+      ) : (
+        <div className={styles.grid}>
+          {members.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
+      )}
+      <TeamForm />
+      <SavedTeamsList />
     </section>
   );
 }
