@@ -2,7 +2,7 @@
 
 A responsive React + TypeScript web application for browsing Pokémon via [PokéAPI](https://pokeapi.co/) and building custom 6-Pokémon teams.
 
-🔗 **Live Demo:** [Add your Vercel URL here]
+🔗 **Live Demo:** [[DEMO](https://pokedex-vert-omega-93.vercel.app/)]
 
 ---
 
