@@ -1,20 +1,184 @@
 :root {
-  --color-bg: #f6f8fc;
-  --color-surface: #ffffff;
-  --color-text: #1e293b;
-  --color-text-muted: #64748b;
-  --color-primary: #ef5350;
-  --color-primary-hover: #dc2626;
-  --color-border: #e2e8f0;
-  --color-error-bg: #fef2f2;
-  --color-error-text: #b91c1c;
+  color-scheme: light dark;
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  /* Raw light & dark palettes */
+  --color-bg-light: #eef2ff;
+  --color-bg-dark: #090d1a;
 
-  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.06);
-  --shadow-card-hover: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --color-surface-light: rgba(255, 255, 255, 0.52);
+  --color-surface-dark: rgba(17, 25, 40, 0.58);
 
+  --color-surface-subtle-light: rgba(255, 255, 255, 0.36);
+  --color-surface-subtle-dark: rgba(30, 41, 59, 0.45);
+
+  --color-text-light: #0f172a;
+  --color-text-dark: #f1f5f9;
+
+  --color-text-muted-light: #475569;
+  --color-text-muted-dark: #94a3b8;
+
+  --color-primary-light: #ef4444;
+  --color-primary-dark: #f87171;
+
+  --color-primary-hover-light: #dc2626;
+  --color-primary-hover-dark: #ef4444;
+
+  --color-border-light: rgba(255, 255, 255, 0.68);
+  --color-border-dark: rgba(255, 255, 255, 0.14);
+
+  --color-error-bg-light: rgba(254, 226, 226, 0.65);
+  --color-error-bg-dark: rgba(127, 29, 29, 0.45);
+
+  --color-error-text-light: #b91c1c;
+  --color-error-text-dark: #fca5a5;
+
+  /* Default (Light) fallback */
+  --color-bg: var(--color-bg-light);
+  --color-surface: var(--color-surface-light);
+  --color-surface-subtle: var(--color-surface-subtle-light);
+  --color-text: var(--color-text-light);
+  --color-text-muted: var(--color-text-muted-light);
+  --color-primary: var(--color-primary-light);
+  --color-primary-hover: var(--color-primary-hover-light);
+  --color-border: var(--color-border-light);
+  --color-error-bg: var(--color-error-bg-light);
+  --color-error-text: var(--color-error-text-light);
+
+  /* Liquid Glass optical effects (Light) */
+  --glass-blur: blur(22px) saturate(180%);
+  --bg-aurora:
+    radial-gradient(at 12% 15%, rgba(251, 113, 133, 0.32) 0px, transparent 52%),
+    radial-gradient(at 88% 18%, rgba(56, 189, 248, 0.30) 0px, transparent 50%),
+    radial-gradient(at 52% 85%, rgba(167, 139, 250, 0.28) 0px, transparent 55%),
+    linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
+  --shadow-card:
+    inset 0 1px 1px rgba(255, 255, 255, 0.78),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+    0 10px 30px -6px rgba(15, 23, 42, 0.08),
+    0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:
+    inset 0 1px 2px rgba(255, 255, 255, 0.92),
+    0 18px 38px -8px rgba(15, 23, 42, 0.15),
+    0 6px 16px -3px rgba(239, 68, 68, 0.12);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
   --max-width: 1160px;
+
+  @media (prefers-color-scheme: dark) {
+    --color-bg: var(--color-bg-dark);
+    --color-surface: var(--color-surface-dark);
+    --color-surface-subtle: var(--color-surface-subtle-dark);
+    --color-text: var(--color-text-dark);
+    --color-text-muted: var(--color-text-muted-dark);
+    --color-primary: var(--color-primary-dark);
+    --color-primary-hover: var(--color-primary-hover-dark);
+    --color-border: var(--color-border-dark);
+    --color-error-bg: var(--color-error-bg-dark);
+    --color-error-text: var(--color-error-text-dark);
+
+    --bg-aurora:
+      radial-gradient(at 12% 15%, rgba(244, 63, 94, 0.22) 0px, transparent 52%),
+      radial-gradient(at 88% 18%, rgba(14, 165, 233, 0.20) 0px, transparent 50%),
+      radial-gradient(at 52% 85%, rgba(139, 92, 246, 0.22) 0px, transparent 55%),
+      linear-gradient(135deg, #060913 0%, #0f172a 55%, #090d1a 100%);
+    --shadow-card:
+      inset 0 1px 1px rgba(255, 255, 255, 0.18),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.05),
+      0 12px 32px -6px rgba(0, 0, 0, 0.45),
+      0 4px 12px -2px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover:
+      inset 0 1px 2px rgba(255, 255, 255, 0.28),
+      0 20px 42px -8px rgba(0, 0, 0, 0.6),
+      0 6px 18px -3px rgba(248, 113, 113, 0.22);
+  }
+
+  @supports (color: light-dark(white, black)) {
+    --color-bg: light-dark(var(--color-bg-light), var(--color-bg-dark));
+    --color-surface: light-dark(var(--color-surface-light), var(--color-surface-dark));
+    --color-surface-subtle: light-dark(
+      var(--color-surface-subtle-light),
+      var(--color-surface-subtle-dark)
+    );
+    --color-text: light-dark(var(--color-text-light), var(--color-text-dark));
+    --color-text-muted: light-dark(
+      var(--color-text-muted-light),
+      var(--color-text-muted-dark)
+    );
+    --color-primary: light-dark(var(--color-primary-light), var(--color-primary-dark));
+    --color-primary-hover: light-dark(
+      var(--color-primary-hover-light),
+      var(--color-primary-hover-dark)
+    );
+    --color-border: light-dark(var(--color-border-light), var(--color-border-dark));
+    --color-error-bg: light-dark(
+      var(--color-error-bg-light),
+      var(--color-error-bg-dark)
+    );
+    --color-error-text: light-dark(
+      var(--color-error-text-light),
+      var(--color-error-text-dark)
+    );
+  }
+}
+
+/* Ręczne wymuszenie jasnego motywu przez przełącznik (data-theme="light") */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: var(--color-bg-light);
+  --color-surface: var(--color-surface-light);
+  --color-surface-subtle: var(--color-surface-subtle-light);
+  --color-text: var(--color-text-light);
+  --color-text-muted: var(--color-text-muted-light);
+  --color-primary: var(--color-primary-light);
+  --color-primary-hover: var(--color-primary-hover-light);
+  --color-border: var(--color-border-light);
+  --color-error-bg: var(--color-error-bg-light);
+  --color-error-text: var(--color-error-text-light);
+
+  --bg-aurora:
+    radial-gradient(at 12% 15%, rgba(251, 113, 133, 0.32) 0px, transparent 52%),
+    radial-gradient(at 88% 18%, rgba(56, 189, 248, 0.30) 0px, transparent 50%),
+    radial-gradient(at 52% 85%, rgba(167, 139, 250, 0.28) 0px, transparent 55%),
+    linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
+  --shadow-card:
+    inset 0 1px 1px rgba(255, 255, 255, 0.78),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+    0 10px 30px -6px rgba(15, 23, 42, 0.08),
+    0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:
+    inset 0 1px 2px rgba(255, 255, 255, 0.92),
+    0 18px 38px -8px rgba(15, 23, 42, 0.15),
+    0 6px 16px -3px rgba(239, 68, 68, 0.12);
+}
+
+/* Ręczne wymuszenie ciemnego motywu przez przełącznik (data-theme="dark") */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: var(--color-bg-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-surface-subtle: var(--color-surface-subtle-dark);
+  --color-text: var(--color-text-dark);
+  --color-text-muted: var(--color-text-muted-dark);
+  --color-primary: var(--color-primary-dark);
+  --color-primary-hover: var(--color-primary-hover-dark);
+  --color-border: var(--color-border-dark);
+  --color-error-bg: var(--color-error-bg-dark);
+  --color-error-text: var(--color-error-text-dark);
+
+  --bg-aurora:
+    radial-gradient(at 12% 15%, rgba(244, 63, 94, 0.22) 0px, transparent 52%),
+    radial-gradient(at 88% 18%, rgba(14, 165, 233, 0.20) 0px, transparent 50%),
+    radial-gradient(at 52% 85%, rgba(139, 92, 246, 0.22) 0px, transparent 55%),
+    linear-gradient(135deg, #060913 0%, #0f172a 55%, #090d1a 100%);
+  --shadow-card:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.05),
+    0 12px 32px -6px rgba(0, 0, 0, 0.45),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover:
+    inset 0 1px 2px rgba(255, 255, 255, 0.28),
+    0 20px 42px -8px rgba(0, 0, 0, 0.6),
+    0 6px 18px -3px rgba(248, 113, 113, 0.22);
 }

@@ -30,7 +30,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
 
   return (
     <article className={styles.card}>
-      <Link to={`/pokemon/${pokemon.name}`} className={styles.card}>
+      <Link to={`/pokemon/${pokemon.name}`} className={styles.cardLink}>
         <span className={styles.number}>{formattedId}</span>
 
         {hasImageError ? (
