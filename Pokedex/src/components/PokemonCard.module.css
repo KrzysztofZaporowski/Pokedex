@@ -1,26 +1,30 @@
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 16px;
+  justify-content: space-between;
+  padding: 16px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  text-decoration: none;
-  color: inherit;
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     border-color 0.18s ease;
 }
 
-.card:hover,
-.card:focus-visible {
+.card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
   border-color: var(--color-primary);
-  outline: none;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .number {
@@ -50,8 +54,45 @@
 }
 
 .name {
-  margin: 0;
+  margin: 0 0 14px;
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: capitalize;
+}
+
+.teamBtn {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.teamBtn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.teamBtnActive {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.teamBtnActive:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.teamBtn:disabled {
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
 }

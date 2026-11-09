@@ -3,20 +3,46 @@ import { ListPage } from "./pages/ListPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { useTeamStore } from "./features/team/useTeamStore";
+import { MAX_TEAM_SIZE } from "./features/team/team.types";
+import styles from "./App.module.css";
 
 function App() {
+  const teamCount = useTeamStore((state) => state.members.length);
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Pokedex</NavLink>
-          </li>
-          <li>
-            <NavLink to="/team">Team page</NavLink>
-          </li>
-        </ul>
-      </nav>
+      <header className={styles.navbar}>
+        <nav className={styles.navInner}>
+          <NavLink to="/" className={styles.brand}>
+            PokéBuilder
+          </NavLink>
+
+          <ul className={styles.navList}>
+            <li>
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+                }
+              >
+                Pokédex
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/team"
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+                }
+              >
+                Team ({teamCount}/{MAX_TEAM_SIZE})
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <main>
         <Routes>
           <Route path="/" element={<ListPage />} />
