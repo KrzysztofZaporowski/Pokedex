@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTeamStore } from "../features/team/useTeamStore";
 import { MAX_TEAM_SIZE } from "../features/team/team.types";
 import { TeamForm } from "../features/team/TeamForm";
-import { SavedTeamsList } from "../features/SavedTeamsList";
+import { SavedTeamsList } from "../features/team/SavedTeamsList";
 import { PokemonCard } from "../components/PokemonCard";
 import styles from "./TeamPage.module.css";
 

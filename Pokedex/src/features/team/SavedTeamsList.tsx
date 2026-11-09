@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useTeamStore } from "./team/useTeamStore";
+import { useTeamStore } from "./useTeamStore";
 import styles from "./SavedTeamsList.module.css";
 
 export function SavedTeamsList() {
