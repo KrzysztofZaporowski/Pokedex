@@ -16,8 +16,13 @@ body {
     Roboto,
     sans-serif;
   background-color: var(--color-bg);
+  background-image: var(--bg-aurora);
+  background-attachment: fixed;
   color: var(--color-text);
   line-height: 1.5;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 #root {

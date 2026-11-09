@@ -11,7 +11,10 @@
   padding: 32px 16px;
   text-align: center;
   background-color: var(--color-surface);
-  border: 1px dashed var(--color-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   color: var(--color-text-muted);
 }
@@ -24,6 +27,8 @@
 
 .teamCard {
   background-color: var(--color-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
