@@ -5,6 +5,7 @@ import { TeamPage } from "./pages/TeamPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { useTeamStore } from "./features/team/useTeamStore";
 import { MAX_TEAM_SIZE } from "./features/team/team.types";
+import { ThemeToggle } from "./components/ThemeToggle";
 import styles from "./App.module.css";
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
               >
                 Team ({teamCount}/{MAX_TEAM_SIZE})
               </NavLink>
+            </li>
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </nav>
